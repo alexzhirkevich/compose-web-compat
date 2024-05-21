@@ -1,5 +1,5 @@
 ./gradlew clean
-./gradlew compatBrowserDistribution || return -1
+./gradlew compatBrowserDistribution
 rm -rf ./composeResources
 cp -r ./example/webApp/build/dist/compat/productionExecutable/* .
 rm -rf ./META-INF
