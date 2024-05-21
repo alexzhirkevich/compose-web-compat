@@ -206,44 +206,25 @@ fun registerHashTask(mode : Mode) =
                     script = """
                         import { gc } from "https://unpkg.com/wasm-feature-detect?module";
                         const wasmGCSupported = await gc()
+                        
+                        if (!wasmGCSupported){
+                            let skikoScript = document.createElement("script")
+                            skikoScript.src = "${skikoJsHashedFile.name}"
+                            document.head.appendChild(skikoScript)
+                        }
+                        
                         let script = document.createElement("script")
                         script.src = wasmGCSupported 
                             ? "${wasmHashedAppFile.name}" 
                             : "${jsHashedAppFile.name}"
                         document.body.appendChild(script)
-                        if (!wasmGCSupported){
-                            let skikoScript = document.createElement("script")
-                            skikoScript.src = "${skikoJsHashedFile.name}"
-                            document.body.appendChild(skikoScript)
-                        }
+                     
                     """.trimIndent()
                 )
             }
         }
     }
 
-
-fun hashComposeResources(composeResourcesDir : File, app : File, baseDir : File){
-
-    val replacements = mutableMapOf<String,String>()
-
-    composeResourcesDir.listFiles().forEach {
-        if (it.isDirectory){
-            hashComposeResources(it, app, baseDir)
-        } else {
-            val hashed = it.hashed()
-            replacements[it.toRelativeString(baseDir)] = hashed.toRelativeString(baseDir)
-        }
-    }
-
-    val text = StringBuilder(app.readText())
-
-    replacements.forEach { (from, to) ->
-        text.replace(from.toRegex(), to)
-    }
-
-    app.writeText(text.toString())
-}
 
 fun File.hashed() : File {
 
