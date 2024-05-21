@@ -4,7 +4,7 @@ with single entry point and resources.
 
 [Example compat app](https://alexzhirkevich.github.io/compose-web-compat/)
 
-<img width="946" alt="image" src="https://github.com/alexzhirkevich/compose-web-compat/assets/63979218/3b3df255-e24b-40eb-b414-3f9b0d22d64d">
+<img width="953" alt="image" src="https://github.com/alexzhirkevich/compose-web-compat/assets/63979218/fc9b8075-f435-4948-9292-ff2cc48c5f3a">
 
 Tasks 
 - `compatBrowserProductionDistribution`
