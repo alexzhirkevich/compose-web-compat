@@ -214,7 +214,7 @@ fun registerHashTask(mode : Mode) =
                         if (!wasmGCSupported){
                             let skikoScript = document.createElement("script")
                             skikoScript.src = "${skikoJsHashedFile.name}"
-                            document.body.appendChild(skikoScript)
+                            document.head.appendChild(skikoScript)
                         }
                     """.trimIndent()
                 )
