@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComposeWebCompat</title>
+</head>
+<body>
+<canvas id="ComposeTarget"></canvas>
+
+<script type="module">
+import { gc } from "https://unpkg.com/wasm-feature-detect?module";
+const wasmGCSupported = await gc()
+let script = document.createElement("script")
+script.src = wasmGCSupported 
+    ? "composeApp-wasm-79ec50ecc9baf038642e6d3f70451a01.js" 
+    : "composeApp-js-1e74217c9c747793d049d3364696e96a.js"
+document.body.appendChild(script)
+if (!wasmGCSupported){
+    let skikoScript = document.createElement("script")
+    skikoScript.src = "skiko-0114ed671f22b46c0b6225b15fa41f35.js"
+    document.body.appendChild(skikoScript)
+}
+</script>
+</body>
+</html>
