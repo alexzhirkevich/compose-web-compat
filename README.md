@@ -10,6 +10,9 @@ Tasks
 - `compatBrowserProductionDistribution`
 - `compatBrowserDevelopmentDistribution`
 
+ <img width="305" alt="image" src="https://github.com/alexzhirkevich/compose-web-compat/assets/63979218/8fb29c7b-9fb9-4c01-ab10-48ac4e43f88f">
+
+
  are used to generate a compat bundle to the `build/dist/compat` directory. 
 
 Task 
