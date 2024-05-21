@@ -1,19 +1,24 @@
-This is a Kotlin Multiplatform project targeting Web.
 
-* `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
-  It contains several subfolders:
-  - `commonMain` is for code that’s common for all targets.
-  - Other folders are for Kotlin code that will be compiled for only the platform indicated in the folder name.
-    For example, if you want to use Apple’s CoreCrypto for the iOS part of your Kotlin app,
-    `iosMain` would be the right folder for such calls.
+Gradle script for building compat (js/wasm) bundle of the Compose Multiplatform web app based on client wasm GC availability
+with single entry point and resources.
 
+[Example compat app](https://alexzhirkevich.github.io/compose-web-compat/)
 
-Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
-[Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
-[Kotlin/Wasm](https://kotl.in/wasm/)…
+<img width="946" alt="image" src="https://github.com/alexzhirkevich/compose-web-compat/assets/63979218/3b3df255-e24b-40eb-b414-3f9b0d22d64d">
 
-**Note:** Compose/Web is Experimental and may be changed at any time. Use it only for evaluation purposes.
-We would appreciate your feedback on Compose/Web and Kotlin/Wasm in the public Slack channel [#compose-web](https://slack-chats.kotlinlang.org/c/compose-web).
-If you face any issues, please report them on [GitHub](https://github.com/JetBrains/compose-multiplatform/issues).
+Tasks 
+- `compatBrowserProductionDistribution`
+- `compatBrowserDevelopmentDistribution`
 
-You can open the web application by running the `:composeApp:wasmJsBrowserDevelopmentRun` Gradle task.
+ are used to generate a compat bundle to the `build/dist/compat` directory. 
+
+Task 
+1. Assembles js and wasm distributables
+2. Merges two distributables to the single bundle
+3. Appends wasmGC detection script to the `index.html`
+4. Appends hashes for script files to avoid browser caching
+
+https://github.com/GoogleChromeLabs/wasm-feature-detect is used to detect wasmGC feature.
+
+To run locally default `jsBrowserRun` and `wasmJsBrowserRun` tasks can be used. Script will automatically add required js files to the `index.html`
+
