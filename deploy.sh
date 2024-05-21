@@ -1,7 +1,6 @@
 ./gradlew clean
-./gradlew compatBrowserDistribution
-rm -rf ./composeResources
-cp -r ./example/webApp/build/dist/compat/productionExecutable/* .
+./gradlew compatBrowserDistribution || return -1
+cp -r ./composeApp/build/dist/compat/productionExecutable/* .
 rm -rf ./META-INF
 git add .
 git commit -m "deploy"
