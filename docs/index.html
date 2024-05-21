@@ -14,12 +14,12 @@ const wasmGCSupported = await gc()
 let script = document.createElement("script")
 script.src = wasmGCSupported 
     ? "composeApp-wasm-79ec50ecc9baf038642e6d3f70451a01.js" 
-    : "composeApp-js-1e74217c9c747793d049d3364696e96a.js"
+    : "composeApp-js-9770ba2d4f48494fc84a213d5231034a.js"
 document.body.appendChild(script)
 if (!wasmGCSupported){
     let skikoScript = document.createElement("script")
     skikoScript.src = "skiko-0114ed671f22b46c0b6225b15fa41f35.js"
-    document.body.appendChild(skikoScript)
+    document.head.appendChild(skikoScript)
 }
 </script>
 </body>
