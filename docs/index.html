@@ -11,16 +11,18 @@
 <script type="module">
 import { gc } from "https://unpkg.com/wasm-feature-detect?module";
 const wasmGCSupported = await gc()
-let script = document.createElement("script")
-script.src = wasmGCSupported 
-    ? "composeApp-wasm-79ec50ecc9baf038642e6d3f70451a01.js" 
-    : "composeApp-js-9770ba2d4f48494fc84a213d5231034a.js"
-document.body.appendChild(script)
+
 if (!wasmGCSupported){
     let skikoScript = document.createElement("script")
     skikoScript.src = "skiko-0114ed671f22b46c0b6225b15fa41f35.js"
     document.head.appendChild(skikoScript)
 }
+
+let script = document.createElement("script")
+script.src = wasmGCSupported 
+    ? "composeApp-wasm-79ec50ecc9baf038642e6d3f70451a01.js" 
+    : "composeApp-js-c9421ab28633e008a45d9ce65dd85e0b.js"
+document.body.appendChild(script)
 </script>
 </body>
 </html>
