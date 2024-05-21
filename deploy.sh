@@ -1,5 +1,5 @@
 ./gradlew clean
-./gradlew compatBrowserDistribution || return -1
+./gradlew compatBrowserDistribution
 cp -r ./composeApp/build/dist/compat/productionExecutable/* .
 rm -rf ./META-INF
 git add .
