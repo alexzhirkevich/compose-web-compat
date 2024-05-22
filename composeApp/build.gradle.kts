@@ -97,7 +97,7 @@ Mode.values().forEach {
 // for webpack tasks these scripts will be removed later
 listOf(
     "js" to jsAppName,
-    "wasmJs" to jsAppName
+    "wasmJs" to wasmAppName
 ).forEach { (sourceSet, appName) ->
     tasks.named("${sourceSet}ProcessResources").configure {
         doLast {
